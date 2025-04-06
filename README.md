@@ -28,7 +28,7 @@ Before starting this lab, ensure you have:
 11. To disable the Windows Firewall you need to connect to the VM, ![image](./https://github.com/user-attachments/assets/404c6bce-b5ad-48c7-b1f7-cdcfaf131e81), search for Firewall & network protection, and turn all those settings off ![image](./https://github.com/user-attachments/assets/23bd8653-288a-49a6-bd38-6ced3bde4d79).
 12. To confirm if everything is working, ping the public IP address of your VM from your local machine.
     
-     Triggering Event Logs (Optional but Recommended):
+    Triggering Event Logs (Optional but Recommended):
 To simulate authentication-related activity and verify that event logging is working correctly, try intentionally entering incorrect login credentials into your VM a few times.
 You should then see these failed login attempts logged under:
 Windows Logs > Security
@@ -46,9 +46,12 @@ In the next part of the lab, we’ll forward those logs to Azure so we can work 
 1. In Azure, type Log Analytics Workspace and create! ![image](./https://github.com/user-attachments/assets/8de90ad2-73b4-4a9b-8529-4a63d07cb103)
 2. Next search for Microsoft Sentinel and add it to the lab.
 3. Then we need to install the Windows Security Events through Sentinel, make sure to click 'manage' afterwards. ![image](./https://github.com/user-attachments/assets/a2080697-2f97-4323-878a-3cea542edb47)
-4. We are going to then enable Windows Security Events via AMA and open the connector page![image](./https://github.com/user-attachments/assets/52c645ae-03a8-4c18-beae-6437eebec681) and create a data collection rule! ![image](./https://github.com/user-attachments/assets/ba977af9-c075-468e-b43b-5935acf69533) Be sure to click everything for the scope and leave the rest as default.
-(This rule is used by the virtual machine to forward logs into our log analytics workspace, which lets us access them inside of our SIEM)
-5. 
+4. We are going to then enable Windows Security Events via AMA and open the connector page![image](./https://github.com/user-attachments/assets/52c645ae-03a8-4c18-beae-6437eebec681) and create a data collection rule! ![image](./https://github.com/user-attachments/assets/ba977af9-c075-468e-b43b-5935acf69533) Be sure to click everything for the scope and leave the rest as default.   
+<(This rule is used by the virtual machine to forward logs into our log analytics workspace, which lets us access them inside of our SIEM)>
+6. Go back to Log Analytics Workspace and select the lab, go into logs and query SecurityEvent ![image](./https://github.com/user-attachments/assets/5cf86c07-a5e5-4abb-bec2-0edd2fcefb79)
+
+   Narrowing Down Log Analysis:
+
 
 
 
