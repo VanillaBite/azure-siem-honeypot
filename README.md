@@ -20,13 +20,16 @@ Before starting this lab, ensure you have:
 
 3. Create a new Virtual Network, search for Virtual Networks in the search bar and follow previous steps.
 4. Create a new Virtual Machines by following the previous steps, be sure to not name it Honeypot, name it something innocuous such as 'desktop-01', or 'user-pc-01'.
-5. Select an image to use for the VM, choose Windows 10 Pro ![image](https://github.com/user-attachments/assets/c6b530c0-70ed-4d00-8f5d-067399e8d743)
+5. Select an image to use for the VM, choose Windows 10 Pro ![image](./https://github.com/user-attachments/assets/c6b530c0-70ed-4d00-8f5d-067399e8d743)
+6. Make sure to choose a VM size you are comfortable with, as well as the OS disk type, I chose to use B1MS, and Standard HDD.
+7. Don't forget to select the Virtual Network you created earlier, and to enable deletion of public IP and NIC when VM is deleted. ![image](./https://github.com/user-attachments/assets/94324392-6c0e-4f7a-82b9-3ebad7df3e99)![image](./https://github.com/user-attachments/assets/ab4b1519-0776-481c-bc25-99ffa7f90156)
 
 
-6. Deploy **Microsoft Sentinel** in the Resource Group.
+
+8. Deploy **Microsoft Sentinel** in the Resource Group.
    ![Deploying Microsoft Sentinel]!
 
-7. Set up necessary permissions for accessing Sentinel data.
+9. Set up necessary permissions for accessing Sentinel data.
 
 ### Step 2: Configuring Microsoft Sentinel
 1. Navigate to Microsoft Sentinel and select your workspace.
