@@ -47,7 +47,7 @@ In the next part of the lab, we’ll forward those logs to Azure so we can work 
 2. Next search for Microsoft Sentinel and add it to the lab.
 3. Then we need to install the Windows Security Events through Sentinel, make sure to click 'manage' afterwards. ![image](./https://github.com/user-attachments/assets/a2080697-2f97-4323-878a-3cea542edb47)
 4. We are going to then enable Windows Security Events via AMA and open the connector page![image](./https://github.com/user-attachments/assets/52c645ae-03a8-4c18-beae-6437eebec681) and create a data collection rule! ![image](./https://github.com/user-attachments/assets/ba977af9-c075-468e-b43b-5935acf69533) Be sure to click everything for the scope and leave the rest as default.   
-<(This rule is used by the virtual machine to forward logs into our log analytics workspace, which lets us access them inside of our SIEM)>
+<b>(This rule is used by the virtual machine to forward logs into our log analytics workspace, which lets us access them inside of our SIEM)<b>
 6. Go back to Log Analytics Workspace and select the lab, go into logs and query SecurityEvent ![image](./https://github.com/user-attachments/assets/5cf86c07-a5e5-4abb-bec2-0edd2fcefb79)
 
    Narrowing Down Log Analysis:
