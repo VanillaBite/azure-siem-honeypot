@@ -16,7 +16,7 @@ Before starting this lab, ensure you have:
 ### Step 1: Setting up the Azure Environment
 1. Go to the Azure portal and log in.
 2. Create a new **Resource Group** by searching Resource Group in the search bar.
-   ![Creating Resource Group]![image](https://github.com/user-attachments/assets/9f9dc761-9450-444c-a3e0-488e949bc166)![image](https://github.com/user-attachments/assets/13f4bd58-f6ea-42a8-8c40-344b04cae5de)
+   ![Creating Resource Group]![image](./https://github.com/user-attachments/assets/9f9dc761-9450-444c-a3e0-488e949bc166)![image](./https://github.com/user-attachments/assets/13f4bd58-f6ea-42a8-8c40-344b04cae5de)
 
 
 
