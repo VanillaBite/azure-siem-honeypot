@@ -18,7 +18,7 @@ Before starting this lab, ensure you have:
 2. Create a new **Resource Group** by searching Resource Groups in the search bar.
 ![Screenshot 2025-04-05 204607](./https://github.com/user-attachments/assets/235fd87c-73e3-4a91-a234-ff24e9e843c6) ![Screenshot 2025-04-05 204107](./https://github.com/user-attachments/assets/8699d538-d558-4b3c-99ee-5f67fbf2b211)
 3. Create a new Virtual Network, search for Virtual Networks in the search bar and follow previous steps.
-4. Create a new Virtual Machines by following the previous steps, be sure to not name it Honeypot, name it something innocuous such as 'desktop-01', or 'user-pc-01'.
+4. Create a new Virtual Machines by following the previous steps, be sure to not name it honeypot, name it something innocuous such as 'desktop-01', or 'user-pc-01'.
 5. Select an image to use for the VM, choose Windows 10 Pro ![image](./https://github.com/user-attachments/assets/c6b530c0-70ed-4d00-8f5d-067399e8d743)
 6. Make sure to choose a VM size you are comfortable with, as well as the OS disk type, I chose to use B1MS, and Standard HDD.
 7. Don't forget to select the Virtual Network you created earlier, and to enable deletion of public IP and NIC when VM is deleted. ![image](./https://github.com/user-attachments/assets/94324392-6c0e-4f7a-82b9-3ebad7df3e99)![image](./https://github.com/user-attachments/assets/ab4b1519-0776-481c-bc25-99ffa7f90156)
@@ -57,7 +57,7 @@ This query identifies successful logins from IP addresses that aren’t part of 
 
 SecurityEvent
 | where EventID == 4624 // Successful login
-| where IpAddress != "your.ip.address" // Exclude your own IP
+| where IpAddress != "192.168.1.100" // Exclude your own IP address
 | where TimeGenerated > ago(1d) // Filter to recent logins
 | project TimeGenerated, Account, IpAddress, LogonType
 | order by TimeGenerated desc
@@ -74,25 +74,11 @@ SecurityEvent
 | where EventID == 4625
 | project TimeGenerated, Account, Computer, EventID, Activity, IpAddress
 
-7. Next the goal is to create a WatchList, go back into MicrosoftSentinel, scroll down onto Configuration and select Watchlist ![image](./https://github.com/user-attachments/assets/727486f7-7bf6-404b-927e-dffee0ccfe32). Make sure the name and alias are the same, I chose 'geoip' and on the next page upload this file [(https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)].](https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)
+7. Next the goal is to create a WatchList, go back into MicrosoftSentinel, scroll down onto Configuration and select Watchlist ![image](./https://github.com/user-attachments/assets/727486f7-7bf6-404b-927e-dffee0ccfe32).
+Make sure the name and alias are the same, I chose to name them 'geoip', and on the next page upload this file [(https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)].](https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)
+For the SearchKey choose network, your WatchList should look like this: ![image](./https://github.com/user-attachments/assets/68ce502c-46db-4976-b1b3-5e43765759bc)
+![image](./https://github.com/user-attachments/assets/73fad1c2-c59d-4b17-9876-0532bf52b544)
 
-8. 
+Now we can see where the failed log in attempts are coming from! ![image](./https://github.com/user-attachments/assets/a2d4fb2f-bed0-4ca5-94fc-c7b2028fe4c8)
 
-
-
-
-
-### Step 3: Ingesting Real Attack Data
-1. Import simulated attack data to test Sentinel's capabilities.
-2. Set up a **KQL (Kusto Query Language)** query to filter and analyze the data.
-
-### Step 4: Analyzing Alerts in Sentinel
-1. Review alerts triggered by the attack data.
-2. Investigate the root cause using Sentinel’s investigation tools.
-3. Create custom detection rules based on observed attack patterns.
-
-### Step 5: Finalizing the Lab Setup
-1. Create a report summarizing your findings and incident response.
-2. Make sure all configurations are saved for future use.
-
-## Conclusion
+9. 
