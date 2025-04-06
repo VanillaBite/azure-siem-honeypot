@@ -15,16 +15,18 @@ Before starting this lab, ensure you have:
 
 ### Step 1: Setting up the Azure Environment
 1. Go to the Azure portal and log in.
-2. Create a new **Resource Group** by searching Resource Group in the search bar.
+2. Create a new **Resource Group** by searching Resource Groups in the search bar.
    ![Creating Resource Group]! ![Screenshot 2025-04-05 204607](./https://github.com/user-attachments/assets/235fd87c-73e3-4a91-a234-ff24e9e843c6) ![Screenshot 2025-04-05 204107](./https://github.com/user-attachments/assets/8699d538-d558-4b3c-99ee-5f67fbf2b211)
 
+3. Create a new Virtual Network, search for Virtual Networks in the search bar and follow previous steps.
+4. Create a new Virtual Machines by following the previous steps, be sure to not name it Honeypot, name it something innocuous such as 'desktop-01', or 'user-pc-01'.
+5. Select an image to use for the VM, choose Windows 10 Pro ![image](https://github.com/user-attachments/assets/c6b530c0-70ed-4d00-8f5d-067399e8d743)
 
 
-
-3. Deploy **Microsoft Sentinel** in the Resource Group.
+6. Deploy **Microsoft Sentinel** in the Resource Group.
    ![Deploying Microsoft Sentinel]!
 
-4. Set up necessary permissions for accessing Sentinel data.
+7. Set up necessary permissions for accessing Sentinel data.
 
 ### Step 2: Configuring Microsoft Sentinel
 1. Navigate to Microsoft Sentinel and select your workspace.
