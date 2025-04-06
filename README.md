@@ -16,12 +16,13 @@ Before starting this lab, ensure you have:
 ### Step 1: Setting up the Azure Environment
 1. Go to the Azure portal and log in.
 2. Create a new **Resource Group** by searching Resource Group in the search bar.
-   ![Creating Resource Group]! 
+   ![Creating Resource Group]! ![Screenshot 2025-04-05 204607](./https://github.com/user-attachments/assets/235fd87c-73e3-4a91-a234-ff24e9e843c6) ![Screenshot 2025-04-05 204107](./https://github.com/user-attachments/assets/8699d538-d558-4b3c-99ee-5f67fbf2b211)
+
 
 
 
 3. Deploy **Microsoft Sentinel** in the Resource Group.
-   ![Deploying Microsoft Sentinel]!![Screenshot 2025-04-05 204607](https://github.com/user-attachments/assets/235fd87c-73e3-4a91-a234-ff24e9e843c6)
+   ![Deploying Microsoft Sentinel]!
 
 4. Set up necessary permissions for accessing Sentinel data.
 
