@@ -11,7 +11,7 @@ Before starting this lab, ensure you have:
 - Basic knowledge of Azure and SOC operations
 - The necessary tools and permissions to access Microsoft Sentinel
 
-## Step-by-Step Guide
+## Step-by-Step Guide 
 
 ### Step 1: Setting up the Azure Environment
 1. Go to the Azure portal and log in.
@@ -156,6 +156,7 @@ This setup will alert you whenever there are repeated failed login attempts, hel
 
 In this project, we successfully set up Microsoft Sentinel to detect brute-force login attempts on a virtual machine running in Azure. By leveraging Log Analytics, KQL queries, and analytical rules, we were able to monitor failed login attempts, detect suspicious activities, and automatically trigger incidents for further investigation.
 
+[![click here](./images/screenshot.png)](https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce)
 
 
 
