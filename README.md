@@ -81,4 +81,54 @@ For the SearchKey choose network, your WatchList should look like this: ![image]
 
 Now we can see where the failed log in attempts are coming from! ![image](./https://github.com/user-attachments/assets/a2d4fb2f-bed0-4ca5-94fc-c7b2028fe4c8)
 
-9. 
+Run this KQL script to get an easy to understand result of where attackers are located, when the attack occurred, the name of the attackers, etc.. ![image](./https://github.com/user-attachments/assets/1caaec0d-ff97-420f-8d28-431ac8611e7e)
+
+let GeoIPDB_FULL = _GetWatchlist("geoip");
+let WindowsEvents = SecurityEvent
+    | where IpAddress == "27.102.71.18"
+    | where EventID == 4625
+    | order by TimeGenerated desc 
+    | evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network);
+WindowsEvents
+| project TimeGenerated, Computer, AttackerIp = IpAddress, cityname, countryname, latitude, longitude;
+
+9. The last thing to do here is to create a visual through Sentinel so we can see on a map where the attackers are coming from. We can do this by creating a WorkBook, you can find this under Threat Management. ![image](./https://github.com/user-attachments/assets/b9ba1c9c-b758-4250-922f-d21b7eb73e2d)
+10. Then we remove the elements that the WorkBook was prepopulated with, and add a new query, make sure to also paste this query into the Advanced Editor.
+    
+    {
+	"type": 3,
+	"content": {
+	"version": "KqlItem/1.0",
+	"query": "let GeoIPDB_FULL = _GetWatchlist(\"geoip\");\nlet WindowsEvents = SecurityEvent;\nWindowsEvents | where EventID == 4625\n| order by TimeGenerated desc\n| evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network)\n| summarize FailureCount = count() by IpAddress, latitude, longitude, cityname, countryname\n| project FailureCount, AttackerIp = IpAddress, latitude, longitude, city = cityname, country = countryname,\nfriendly_location = strcat(cityname, \" (\", countryname, \")\");",
+	"size": 3,
+	"timeContext": {
+		"durationMs": 2592000000
+	},
+	"queryType": 0,
+	"resourceType": "microsoft.operationalinsights/workspaces",
+	"visualization": "map",
+	"mapSettings": {
+		"locInfo": "LatLong",
+		"locInfoColumn": "countryname",
+		"latitude": "latitude",
+		"longitude": "longitude",
+		"sizeSettings": "FailureCount",
+		"sizeAggregation": "Sum",
+		"opacity": 0.8,
+		"labelSettings": "friendly_location",
+		"legendMetric": "FailureCount",
+		"legendAggregation": "Sum",
+		"itemColorSettings": {
+		"nodeColorField": "FailureCount",
+		"colorAggregation": "Sum",
+		"type": "heatmap",
+		"heatmapPalette": "greenRed"
+		}
+	}
+	},
+	"name": "query - 0"
+}
+
+11. When all that is finished the final product should look similar to this ![image](./https://github.com/user-attachments/assets/36e45261-c57e-4bd0-b1be-8fb1d514e582)
+
+     What this query is doing is counting up the different login failures where the longitude, latitude, city, and country are the same and plotting them on the map!
