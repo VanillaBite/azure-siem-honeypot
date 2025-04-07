@@ -132,3 +132,31 @@ WindowsEvents
 11. When all that is finished the final product should look similar to this ![image](./https://github.com/user-attachments/assets/36e45261-c57e-4bd0-b1be-8fb1d514e582)
 
      What this query is doing is counting up the different login failures where the longitude, latitude, city, and country are the same and plotting them on the map!
+
+### Step 3 Detection and Incident Response
+In this step, we will set up analytical rules in Microsoft Sentinel to trigger alerts for suspicious activities, like brute force login attempts, and automatically create incidents when those alerts are triggered.
+
+To do this we go to Microsoft Sentinel and go to the Analytics tab, then click on "+ Create" --> "Scheduled query rule" 
+
+For Brute Force Attempt Detection use this query ![image](./https://github.com/user-attachments/assets/32b4d054-775f-4ae9-af72-b2044f5081cc)
+![image](./https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce)
+
+SecurityEvent
+| where EventID == 4625  // Event ID for failed logon attempts
+| summarize FailedAttempts = count() by Account, IpAddress, bin(TimeGenerated, 10m)
+| where FailedAttempts >= 5  // Customize the threshold for your needs
+| project TimeGenerated, Account, IpAddress, FailedAttempts
+| order by TimeGenerated desc
+
+This query identifies multiple failed login attempts within a set time period (e.g., 5 failed logins in 10 minutes) from the same account or IP address.
+
+This setup will alert you whenever there are repeated failed login attempts, helping you detect potential brute-force attacks or suspicious activity
+
+### Conclusion
+
+In this project, we successfully set up Microsoft Sentinel to detect brute-force login attempts on a virtual machine running in Azure. By leveraging Log Analytics, KQL queries, and analytical rules, we were able to monitor failed login attempts, detect suspicious activities, and automatically trigger incidents for further investigation.
+
+
+
+
+
