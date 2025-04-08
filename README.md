@@ -48,12 +48,12 @@ In the next part of the lab, we’ll forward those logs to Azure so we can work 
 3. Then we need to install the Windows Security Events through Sentinel, make sure to click 'manage' afterwards. ![image](./https://github.com/user-attachments/assets/a2080697-2f97-4323-878a-3cea542edb47)
 4. We are going to then enable Windows Security Events via AMA and open the connector page![image](./https://github.com/user-attachments/assets/52c645ae-03a8-4c18-beae-6437eebec681) and create a data collection rule! ![image](./https://github.com/user-attachments/assets/ba977af9-c075-468e-b43b-5935acf69533) Be sure to click everything for the scope and leave the rest as default.   
 (This rule is used by the virtual machine to forward logs into our log analytics workspace, which lets us access them inside of our SIEM)
-6. Go back to Log Analytics Workspace and select the lab, go into logs and query SecurityEvent to see all records, you can also narrow down what information should be presented ![image](./https://github.com/user-attachments/assets/5cf86c07-a5e5-4abb-bec2-0edd2fcefb79)![image](./https://github.com/user-attachments/assets/175163f6-f2e1-4862-8eac-7432b5dc9d0a). There are more examples below!
+6. Go back to Log Analytics Workspace and select the lab, go into logs and query SecurityEvent to see all records, you can also narrow down what information should be [![presented](./images/screenshot.png)](https://github.com/user-attachments/assets/5cf86c07-a5e5-4abb-bec2-0edd2fcefb79)[![here](./images/screenshot.png)](https://github.com/user-attachments/assets/175163f6-f2e1-4862-8eac-7432b5dc9d0a). There are more examples below!
 
 
    Narrowing Down Log Analysis:
 
-This query identifies successful logins from IP addresses that aren’t part of your normal network [![range.](./images/screenshot.png)](./https://github.com/user-attachments/assets/2264511a-cf9d-4a91-ad1c-0fdd5890f459)
+This query identifies successful logins from IP addresses that aren’t part of your normal network [![range.](./images/screenshot.png)](https://github.com/user-attachments/assets/2264511a-cf9d-4a91-ad1c-0fdd5890f459)
 
 SecurityEvent
 | where EventID == 4624 // Successful login
@@ -62,7 +62,7 @@ SecurityEvent
 | project TimeGenerated, Account, IpAddress, LogonType
 | order by TimeGenerated desc
 
-These queries identify multiple failed log on attempts, [![here](./images/screenshot.png)](https://github.com/user-attachments/assets/4a20fc56-1b7d-41c1-ba57-0794719174be) and [![.here](./images/screenshot.png)](https://github.com/user-attachments/assets/109ab33b-d7e6-4996-9bb2-c4f04d4f8546)
+These queries identify multiple failed log on attempts [![here](./images/screenshot.png)](https://github.com/user-attachments/assets/4a20fc56-1b7d-41c1-ba57-0794719174be) 
 
 
 SecurityEvent
@@ -79,7 +79,7 @@ SecurityEvent
 Make sure the name and alias are the same, I chose to name them 'geoip', and on the next page upload this file [(https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)].](https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)
 
 For the SearchKey choose network, your WatchList should look like [![this:](./images/screenshot.png)](https://github.com/user-attachments/assets/68ce502c-46db-4976-b1b3-5e43765759bc)
-![image](https://github.com/user-attachments/assets/73fad1c2-c59d-4b17-9876-0532bf52b544)
+[![and this](./images/screenshot.png)](https://github.com/user-attachments/assets/73fad1c2-c59d-4b17-9876-0532bf52b544)
 
 Now we can see where the failed log in attempts are coming [![from!](./images/screenshot.png)](https://github.com/user-attachments/assets/a2d4fb2f-bed0-4ca5-94fc-c7b2028fe4c8)
 
