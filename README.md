@@ -53,7 +53,7 @@ In the next part of the lab, we’ll forward those logs to Azure so we can work 
 
    Narrowing Down Log Analysis:
 
-This query identifies successful logins from IP addresses that aren’t part of your normal network range. ![image](./https://github.com/user-attachments/assets/2264511a-cf9d-4a91-ad1c-0fdd5890f459)
+This query identifies successful logins from IP addresses that aren’t part of your normal network [![range.](./images/screenshot.png)](./https://github.com/user-attachments/assets/2264511a-cf9d-4a91-ad1c-0fdd5890f459)
 
 SecurityEvent
 | where EventID == 4624 // Successful login
@@ -62,7 +62,7 @@ SecurityEvent
 | project TimeGenerated, Account, IpAddress, LogonType
 | order by TimeGenerated desc
 
-These queries identify multiple failed log on attempts. ![image](./https://github.com/user-attachments/assets/4a20fc56-1b7d-41c1-ba57-0794719174be) ![image](./https://github.com/user-attachments/assets/109ab33b-d7e6-4996-9bb2-c4f04d4f8546)
+These queries identify multiple failed log on attempts, [![here](./images/screenshot.png)](https://github.com/user-attachments/assets/4a20fc56-1b7d-41c1-ba57-0794719174be) and [![.here](./images/screenshot.png)](https://github.com/user-attachments/assets/109ab33b-d7e6-4996-9bb2-c4f04d4f8546)
 
 
 SecurityEvent
@@ -74,14 +74,16 @@ SecurityEvent
 | where EventID == 4625
 | project TimeGenerated, Account, Computer, EventID, Activity, IpAddress
 
-7. Next the goal is to create a WatchList, go back into MicrosoftSentinel, scroll down onto Configuration and select Watchlist ![image](./https://github.com/user-attachments/assets/727486f7-7bf6-404b-927e-dffee0ccfe32).
+7. Next the goal is to create a WatchList, go back into MicrosoftSentinel, scroll down onto Configuration and select [![Watchlist](./images/screenshot.png)](https://github.com/user-attachments/assets/727486f7-7bf6-404b-927e-dffee0ccfe32).
+   
 Make sure the name and alias are the same, I chose to name them 'geoip', and on the next page upload this file [(https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)].](https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)
-For the SearchKey choose network, your WatchList should look like [![this:](./images/screenshot.png)](./https://github.com/user-attachments/assets/68ce502c-46db-4976-b1b3-5e43765759bc)
-![image](./https://github.com/user-attachments/assets/73fad1c2-c59d-4b17-9876-0532bf52b544)
 
-Now we can see where the failed log in attempts are coming [![from!](./images/screenshot.png)](./https://github.com/user-attachments/assets/a2d4fb2f-bed0-4ca5-94fc-c7b2028fe4c8)
+For the SearchKey choose network, your WatchList should look like [![this:](./images/screenshot.png)](https://github.com/user-attachments/assets/68ce502c-46db-4976-b1b3-5e43765759bc)
+![image](https://github.com/user-attachments/assets/73fad1c2-c59d-4b17-9876-0532bf52b544)
 
-Run this KQL script to get an easy to understand result of where attackers are located, when the attack occurred, the name of the attackers, ![![etc...](./images/screenshot.png)](./https://github.com/user-attachments/assets/1caaec0d-ff97-420f-8d28-431ac8611e7e)
+Now we can see where the failed log in attempts are coming [![from!](./images/screenshot.png)](https://github.com/user-attachments/assets/a2d4fb2f-bed0-4ca5-94fc-c7b2028fe4c8)
+
+Run this KQL script to get an easy to understand result of where attackers are located, when the attack occurred, the name of the attackers, ![![etc...](./images/screenshot.png)](https://github.com/user-attachments/assets/1caaec0d-ff97-420f-8d28-431ac8611e7e)
 
 let GeoIPDB_FULL = _GetWatchlist("geoip");
 let WindowsEvents = SecurityEvent
@@ -92,7 +94,7 @@ let WindowsEvents = SecurityEvent
 WindowsEvents
 | project TimeGenerated, Computer, AttackerIp = IpAddress, cityname, countryname, latitude, longitude;
 
-9. The last thing to do here is to create a visual through Sentinel so we can see on a map where the attackers are coming from. We can do this by creating a WorkBook, you can find this under [![Threat Management](./images/screenshot.png)](./https://github.com/user-attachments/assets/b9ba1c9c-b758-4250-922f-d21b7eb73e2d)
+9. The last thing to do here is to create a visual through Sentinel so we can see on a map where the attackers are coming from. We can do this by creating a WorkBook, you can find this under [![Threat Management](./images/screenshot.png)](https://github.com/user-attachments/assets/b9ba1c9c-b758-4250-922f-d21b7eb73e2d)
     
 10. Then we remove the elements that the WorkBook was prepopulated with, and add a new query, make sure to also paste this query into the Advanced Editor.
     
