@@ -129,7 +129,7 @@ WindowsEvents
 	"name": "query - 0"
 }
 
-11. When all that is finished the final product should look similar to this ![image](./https://github.com/user-attachments/assets/36e45261-c57e-4bd0-b1be-8fb1d514e582)
+11. When all that is finished the final product should look similar to [![this](./images/screenshot.png)](./https://github.com/user-attachments/assets/36e45261-c57e-4bd0-b1be-8fb1d514e582)
 
      What this query is doing is counting up the different login failures where the longitude, latitude, city, and country are the same and plotting them on the map!
 
