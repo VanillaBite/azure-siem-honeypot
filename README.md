@@ -140,8 +140,8 @@ To do this we go to Microsoft Sentinel and go to the Analytics tab, then click o
 
 For Brute Force Attempt Detection input use [![these settings](./images/screenshot.png)](https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce)])
 
-![image](./https://github.com/user-attachments/assets/32b4d054-775f-4ae9-af72-b2044f5081cc)
-![image](./https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce)
+[![these settings](./images/screenshot.png)](https://github.com/user-attachments/assets/32b4d054-775f-4ae9-af72-b2044f5081cc)])
+[![these settings](./images/screenshot.png)](https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce)])
 
 SecurityEvent
 | where EventID == 4625  // Event ID for failed logon attempts
