@@ -138,7 +138,7 @@ In this step, we will set up analytical rules in Microsoft Sentinel to trigger a
 
 To do this we go to Microsoft Sentinel and go to the Analytics tab, then click on "+ Create" --> "Scheduled query rule" 
 
-For Brute Force Attempt Detection input 9![these settings] (./images/screenshot.png)]([https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce)](https://github.com/user-attachments/assets/32b4d054-775f-4ae9-af72-b2044f5081cc))
+For Brute Force Attempt Detection input![these settings] (./images/screenshot.png)]([https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce)])
 
 ![image](./https://github.com/user-attachments/assets/32b4d054-775f-4ae9-af72-b2044f5081cc)
 ![image](./https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce)
