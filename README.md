@@ -137,7 +137,7 @@ WindowsEvents
 
      What this query is doing is counting up the different login failures where the longitude, latitude, city, and country are the same and plotting them on the map!
 
-### Step 3 Detection and Incident Response
+### Step 3: Detection and Incident Response
 In this step, we will set up analytical rules in Microsoft Sentinel to trigger alerts for suspicious activities, like brute force login attempts, and automatically create incidents when those alerts are triggered.
 
 To do this we go to Microsoft Sentinel and go to the Analytics tab, then click on "+ Create" --> "Scheduled query rule" 
