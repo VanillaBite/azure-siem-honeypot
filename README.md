@@ -138,10 +138,9 @@ In this step, we will set up analytical rules in Microsoft Sentinel to trigger a
 
 To do this we go to Microsoft Sentinel and go to the Analytics tab, then click on "+ Create" --> "Scheduled query rule" 
 
-For Brute Force Attempt Detection input use [![these settings](./images/screenshot.png)](https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce)])
+If we want to create a rule for Brute Force Attempt Detection input use [![these settings](./images/screenshot.png)](https://github.com/user-attachments/assets/32b4d054-775f-4ae9-af72-b2044f5081cc)]) for MITRE ATT&CK.
 
-[![these settings](./images/screenshot.png)](https://github.com/user-attachments/assets/32b4d054-775f-4ae9-af72-b2044f5081cc)])
-[![these settings](./images/screenshot.png)](https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce)])
+After we implement those settings, click on "Set Rule Logic" and input this KQL script!
 
 SecurityEvent
 | where EventID == 4625  // Event ID for failed logon attempts
@@ -149,6 +148,8 @@ SecurityEvent
 | where FailedAttempts >= 5  // Customize the threshold for your needs
 | project TimeGenerated, Account, IpAddress, FailedAttempts
 | order by TimeGenerated desc
+
+it should appear as [![this](./images/screenshot.png)](https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce)]) afterwards.
 
 This query identifies multiple failed login attempts within a set time period (e.g., 5 failed logins in 10 minutes) from the same account or IP address.
 
