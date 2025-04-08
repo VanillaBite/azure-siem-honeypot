@@ -2,7 +2,9 @@
 A project to set up a basic home SOC in Azure using Microsoft Sentinel, a honeypot VM, and real-world attack data analysis.
 
 ## Project Overview
-This project involves setting up Microsoft Sentinel in a SOC environment using Azure and real attack data. The lab simulates real-world security incidents and prepares for analysis in Sentinel.
+This project focuses on building a functional Security Operations Center (SOC) lab using Microsoft Sentinel. The goal was to successfully monitor and analyze real-time cyberattacks targeting a virtual machine hosted in Azure. I set up Microsoft Sentinel, connected it to Log Analytics, and used Kusto Query Language (KQL) to detect suspicious behavior in the logs—primarily brute-force login attempts.
+
+Throughout the project, I created analytical rules to generate alerts based on specific patterns of attack, which helped simulate a real-world SOC environment. This hands-on experience gave me deeper insight into threat detection, incident management, and working with SIEM tools in the cloud.
 
 ## Prerequisites
 Before starting this lab, ensure you have:
@@ -73,7 +75,7 @@ SecurityEvent
 | where EventID == 4625
 | project TimeGenerated, Account, Computer, EventID, Activity, IpAddress
 
-7. Next the goal is to create a WatchList, go back into MicrosoftSentinel, scroll down onto Configuration and select [![Watchlist](./images/screenshot.png)](https://github.com/user-attachments/assets/727486f7-7bf6-404b-927e-dffee0ccfe32).
+- Next the goal is to create a WatchList, go back into MicrosoftSentinel, scroll down onto Configuration and select [![Watchlist](./images/screenshot.png)](https://github.com/user-attachments/assets/727486f7-7bf6-404b-927e-dffee0ccfe32).
    
 Make sure the name and alias are the same, I chose to name them 'geoip', and on the next page upload this file [(https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)].](https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)
 
