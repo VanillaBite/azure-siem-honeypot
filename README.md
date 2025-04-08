@@ -76,12 +76,12 @@ SecurityEvent
 
 7. Next the goal is to create a WatchList, go back into MicrosoftSentinel, scroll down onto Configuration and select Watchlist ![image](./https://github.com/user-attachments/assets/727486f7-7bf6-404b-927e-dffee0ccfe32).
 Make sure the name and alias are the same, I chose to name them 'geoip', and on the next page upload this file [(https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)].](https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)
-For the SearchKey choose network, your WatchList should look like this: ![image](./https://github.com/user-attachments/assets/68ce502c-46db-4976-b1b3-5e43765759bc)
+For the SearchKey choose network, your WatchList should look like [![this:](./images/screenshot.png)](./https://github.com/user-attachments/assets/68ce502c-46db-4976-b1b3-5e43765759bc)
 ![image](./https://github.com/user-attachments/assets/73fad1c2-c59d-4b17-9876-0532bf52b544)
 
-Now we can see where the failed log in attempts are coming from! ![image](./https://github.com/user-attachments/assets/a2d4fb2f-bed0-4ca5-94fc-c7b2028fe4c8)
+Now we can see where the failed log in attempts are coming [![from!](./images/screenshot.png)](./https://github.com/user-attachments/assets/a2d4fb2f-bed0-4ca5-94fc-c7b2028fe4c8)
 
-Run this KQL script to get an easy to understand result of where attackers are located, when the attack occurred, the name of the attackers, etc.. ![image](./https://github.com/user-attachments/assets/1caaec0d-ff97-420f-8d28-431ac8611e7e)
+Run this KQL script to get an easy to understand result of where attackers are located, when the attack occurred, the name of the attackers, ![![etc...](./images/screenshot.png)](./https://github.com/user-attachments/assets/1caaec0d-ff97-420f-8d28-431ac8611e7e)
 
 let GeoIPDB_FULL = _GetWatchlist("geoip");
 let WindowsEvents = SecurityEvent
@@ -92,7 +92,8 @@ let WindowsEvents = SecurityEvent
 WindowsEvents
 | project TimeGenerated, Computer, AttackerIp = IpAddress, cityname, countryname, latitude, longitude;
 
-9. The last thing to do here is to create a visual through Sentinel so we can see on a map where the attackers are coming from. We can do this by creating a WorkBook, you can find this under Threat Management. ![image](./https://github.com/user-attachments/assets/b9ba1c9c-b758-4250-922f-d21b7eb73e2d)
+9. The last thing to do here is to create a visual through Sentinel so we can see on a map where the attackers are coming from. We can do this by creating a WorkBook, you can find this under [![Threat Management](./images/screenshot.png)](./https://github.com/user-attachments/assets/b9ba1c9c-b758-4250-922f-d21b7eb73e2d)
+    
 10. Then we remove the elements that the WorkBook was prepopulated with, and add a new query, make sure to also paste this query into the Advanced Editor.
     
     {
@@ -129,7 +130,7 @@ WindowsEvents
 	"name": "query - 0"
 }
 
-11. When all that is finished the final product should look similar to [![this](./images/screenshot.png)](https://github.com/user-attachments/assets/36e45261-c57e-4bd0-b1be-8fb1d514e582)
+12. When all that is finished the final product should look similar to [![this](./images/screenshot.png)](https://github.com/user-attachments/assets/36e45261-c57e-4bd0-b1be-8fb1d514e582)
 
      What this query is doing is counting up the different login failures where the longitude, latitude, city, and country are the same and plotting them on the map!
 
@@ -149,7 +150,7 @@ SecurityEvent
 | project TimeGenerated, Account, IpAddress, FailedAttempts
 | order by TimeGenerated desc
 
-it should appear as [![this](./images/screenshot.png)](https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce) afterwards.
+It should appear as [![this](./images/screenshot.png)](https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce) afterwards.
 
 This query identifies multiple failed login attempts within a set time period (e.g., 5 failed logins in 10 minutes) from the same account or IP address.
 
