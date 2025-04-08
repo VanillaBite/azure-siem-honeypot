@@ -83,7 +83,7 @@ For the SearchKey choose network, your WatchList should look like [![this:](./im
 
 Now we can see where the failed log in attempts are coming [![from!](./images/screenshot.png)](https://github.com/user-attachments/assets/a2d4fb2f-bed0-4ca5-94fc-c7b2028fe4c8)
 
-Run this KQL script to get an easy to understand result of where attackers are located, when the attack occurred, the name of the attackers, ![![etc...](./images/screenshot.png)](https://github.com/user-attachments/assets/1caaec0d-ff97-420f-8d28-431ac8611e7e)
+Run this KQL script to get an easy to understand result of where attackers are located, when the attack occurred, the name of the attackers, [![etc..](./images/screenshot.png)](https://github.com/user-attachments/assets/1caaec0d-ff97-420f-8d28-431ac8611e7e)
 
 let GeoIPDB_FULL = _GetWatchlist("geoip");
 let WindowsEvents = SecurityEvent
