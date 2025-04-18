@@ -164,5 +164,5 @@ This setup will alert you whenever there are repeated failed login attempts, hel
 In this project, we successfully set up Microsoft Sentinel to detect brute-force login attempts on a virtual machine running in Azure. By leveraging Log Analytics, KQL queries, and analytical rules, we were able to monitor failed login attempts, detect suspicious activities, and automatically trigger incidents for further investigation.
 
 
-
+this shit confusing
 
