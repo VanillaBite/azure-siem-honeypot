@@ -17,7 +17,7 @@ Before starting this lab, ensure you have:
 
 ### Step 1: Setting up the Azure Environment
 - Go to the Azure portal and log in.
-- Create a new **Resource Group** by searching Resource Groups in the search [bar](./screenshot/im3.png) and [click here](./images/im2.png)
+- Create a new **Resource Group** by searching Resource Groups in the search [bar](./images/im3.png) and [click here](./images/im2.png)
 - Create a new Virtual Network, search for Virtual Networks in the search bar and follow previous steps.
 - Create a new Virtual Machines by following the previous steps, be sure to not name it honeypot, name it something innocuous such as 'desktop-01', or 'user-pc-01'.
 - Select an image to use for the VM, choose Windows 10 [Pro](./images/im4.png)
