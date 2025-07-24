@@ -17,23 +17,23 @@ Before starting this lab, ensure you have:
 
 ### Step 1: Setting up the Azure Environment
 - Go to the Azure portal and log in.
-- Create a new **Resource Group** by searching Resource Groups in the search [![bar](./images/screenshot.png)](https://github.com/user-attachments/assets/235fd87c-73e3-4a91-a234-ff24e9e843c6) [![and click here](./images/screenshot.png)](https://github.com/user-attachments/assets/8699d538-d558-4b3c-99ee-5f67fbf2b211)
+- Create a new **Resource Group** by searching Resource Groups in the search [bar](./images/im3.png) and [click here](./images/im2.png)
 - Create a new Virtual Network, search for Virtual Networks in the search bar and follow previous steps.
 - Create a new Virtual Machines by following the previous steps, be sure to not name it honeypot, name it something innocuous such as 'desktop-01', or 'user-pc-01'.
-- Select an image to use for the VM, choose Windows 10 [![Pro](./images/screenshot.png)](https://github.com/user-attachments/assets/c6b530c0-70ed-4d00-8f5d-067399e8d743)
+- Select an image to use for the VM, choose Windows 10 [Pro](./images/im4.png)
 - Make sure to choose a VM size you are comfortable with, as well as the OS disk type, I chose to use B1MS, and Standard HDD.
-- Don't forget to select the Virtual Network you created earlier, and to enable deletion of public IP and NIC when VM is deleted. [![shown here](./images/screenshot.png)](https://github.com/user-attachments/assets/94324392-6c0e-4f7a-82b9-3ebad7df3e99)[![and here](./images/screenshot.png)](https://github.com/user-attachments/assets/ab4b1519-0776-481c-bc25-99ffa7f90156)
-- Search Resource Groups and select the name of your lab, it should look like [![this](./images/screenshot.png)](https://github.com/user-attachments/assets/976511d8-3289-4c3f-b33a-e5e156a46c31)
-- Next we will need to edit the network security group, we are going to make this device vulnerable to the internet by opening up the firewall which will allow any traffic to have access. To do this, select 'corp-net-east-01-nsg' [![here](./images/screenshot.png)](https://github.com/user-attachments/assets/a0082dd3-5266-4164-97b4-c7e236fb68ea) and delete security rule RDP.
-- Go to Settings, then Inbound Security rules, we are going to add the rule that allows any traffic [![in:](./images/screenshot.png)](https://github.com/user-attachments/assets/f590a3d3-27e2-439f-b2b6-57df71424da2)
-- To disable the Windows Firewall you need to connect to the [![VM](./images/screenshot.png)](https://github.com/user-attachments/assets/404c6bce-b5ad-48c7-b1f7-cdcfaf131e81), search for Firewall & network protection, and turn all those settings [![off](./images/screenshot.png)](https://github.com/user-attachments/assets/23bd8653-288a-49a6-bd38-6ced3bde4d79).
+- Don't forget to select the Virtual Network you created earlier, and to enable deletion of public IP and NIC when VM is deleted. [shown here](./images/im5.png) and [here](./images/im6.png)
+- Search Resource Groups and select the name of your lab, it should look like [this](./images/im61.png)
+- Next we will need to edit the network security group, we are going to make this device vulnerable to the internet by opening up the firewall which will allow any traffic to have access. To do this, select 'corp-net-east-01-nsg' [here](./images/im1.png) and delete security rule RDP.
+- Go to Settings, then Inbound Security rules, we are going to add the rule that allows any traffic [in](./images/im7.png)
+- To disable the Windows Firewall you need to connect to the [VM](./images/im8.png), search for Firewall & network protection, and turn all those settings [off](./images/im9.png)
 - To confirm if everything is working, ping the public IP address of your VM from your local machine.
     
     Triggering Event Logs (Optional but Recommended):
 To simulate authentication-related activity and verify that event logging is working correctly, try intentionally entering incorrect login credentials into your VM a few times.
 You should then see these failed login attempts logged under:
 Windows Logs > Security
-Event ID: 4625 (An account failed to log on) [![event logs](./images/screenshot.png)](https://github.com/user-attachments/assets/0d89cf6a-148a-4363-b8e1-c6408513e06f)
+Event ID: 4625 (An account failed to log on) [event logs](./images/im10.png)
 
 Note: This is a safe way to generate activity and helps confirm your SIEM is capturing security events accurately.
 
@@ -44,17 +44,17 @@ Since we’ve opened this VM to the public internet, it’s very likely that ran
 In the next part of the lab, we’ll forward those logs to Azure so we can work with them inside Microsoft Sentinel. This way, we can start building queries, spotting suspicious activity, and getting hands-on with how a real SIEM works.
 
 ### Step 2: Configuring Microsoft Sentinel
-- In Azure, type Log Analytics Workspace and [![create](./images/screenshot.png)](https://github.com/user-attachments/assets/8de90ad2-73b4-4a9b-8529-4a63d07cb103)
+- In Azure, type Log Analytics Workspace and [create](./images/im62.png)
 - Next search for Microsoft Sentinel and add it to the lab.
-- Then we need to install the Windows Security Events through Sentinel, make sure to click 'manage' [![afterwards](./images/screenshot.png)](https://github.com/user-attachments/assets/a2080697-2f97-4323-878a-3cea542edb47)
-- We are going to then enable Windows Security Events via AMA and open the connector [![page](./images/screenshot.png)](https://github.com/user-attachments/assets/52c645ae-03a8-4c18-beae-6437eebec681) and create a data collection [![rule](./images/screenshot.png)](https://github.com/user-attachments/assets/ba977af9-c075-468e-b43b-5935acf69533) Be sure to click everything for the scope and leave the rest as default.   
+- Then we need to install the Windows Security Events through Sentinel, make sure to click 'manage' [afterwards](./images/im12.png)
+- We are going to then enable Windows Security Events via AMA and open the connector [page](./images/im13.png) and create a data collection [rule](./images/im15.png) Be sure to click everything for the scope and leave the rest as default.   
 (This rule is used by the virtual machine to forward logs into our log analytics workspace, which lets us access them inside of our SIEM)
-- Go back to Log Analytics Workspace and select the lab, go into logs and query [![SecurityEvent](./images/screenshot.png)](https://github.com/user-attachments/assets/5cf86c07-a5e5-4abb-bec2-0edd2fcefb79) to see all records, you can also narrow down what information should be [![presented](./images/screenshot.png)](https://github.com/user-attachments/assets/175163f6-f2e1-4862-8eac-7432b5dc9d0a). There are more examples below!
+- Go back to Log Analytics Workspace and select the lab, go into logs and query [SecurityEvent](./images/im16.png) to see all records, you can also narrow down what information should be [presented](./images/im20.png). There are more examples below!
 
 
    Narrowing Down Log Analysis:
 
-This query identifies successful logins from IP addresses that aren’t part of your normal network [![range.](./images/screenshot.png)](https://github.com/user-attachments/assets/2264511a-cf9d-4a91-ad1c-0fdd5890f459)
+This query identifies successful logins from IP addresses that aren’t part of your normal network [range.](./images/im18.png)
 
 SecurityEvent
 | where EventID == 4624 // Successful login
@@ -63,7 +63,7 @@ SecurityEvent
 | project TimeGenerated, Account, IpAddress, LogonType
 | order by TimeGenerated desc
 
-These queries identify multiple failed log on attempts [![here](./images/screenshot.png)](https://github.com/user-attachments/assets/4a20fc56-1b7d-41c1-ba57-0794719174be) 
+These queries identify multiple failed log on attempts [here](./images/im21.png)
 
 
 SecurityEvent
@@ -75,16 +75,16 @@ SecurityEvent
 | where EventID == 4625
 | project TimeGenerated, Account, Computer, EventID, Activity, IpAddress
 
-- Next the goal is to create a WatchList, go back into MicrosoftSentinel, scroll down onto Configuration and select [![Watchlist](./images/screenshot.png)](https://github.com/user-attachments/assets/727486f7-7bf6-404b-927e-dffee0ccfe32).
+- Next the goal is to create a WatchList, go back into MicrosoftSentinel, scroll down onto Configuration and select [Watchlist](./images/screenshot.png).
    
 Make sure the name and alias are the same, I chose to name them 'geoip', and on the next page upload this file [(https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)].](https://drive.google.com/file/d/13EfjM_4BohrmaxqXZLB5VUBIz2sv9Siz/view?usp=sharing)
 
-For the SearchKey choose network, your WatchList should look like [![this:](./images/screenshot.png)](https://github.com/user-attachments/assets/68ce502c-46db-4976-b1b3-5e43765759bc)
-[![and this](./images/screenshot.png)](https://github.com/user-attachments/assets/73fad1c2-c59d-4b17-9876-0532bf52b544)
+For the SearchKey choose network, your WatchList should look like [this](./images/screenshot.png) and
+[this](./images/screenshot.png)
 
-Now we can see where the failed log in attempts are coming [![from!](./images/screenshot.png)](https://github.com/user-attachments/assets/a2d4fb2f-bed0-4ca5-94fc-c7b2028fe4c8)
+Now we can see where the failed log in attempts are coming [from!](./images/screenshot.png)
 
-Run this KQL script to get an easy to understand result of where attackers are located, when the attack occurred, the name of the attackers, [![etc..](./images/screenshot.png)](https://github.com/user-attachments/assets/1caaec0d-ff97-420f-8d28-431ac8611e7e)
+Run this KQL script to get an easy to understand result of where attackers are located, when the attack occurred, the name of the attackers, [etc..](./images/screenshot.png)
 
 let GeoIPDB_FULL = _GetWatchlist("geoip");
 let WindowsEvents = SecurityEvent
@@ -95,7 +95,7 @@ let WindowsEvents = SecurityEvent
 WindowsEvents
 | project TimeGenerated, Computer, AttackerIp = IpAddress, cityname, countryname, latitude, longitude;
 
-- The last thing to do here is to create a visual through Sentinel so we can see on a map where the attackers are coming from. We can do this by creating a WorkBook, you can find this under [![Threat Management](./images/screenshot.png)](https://github.com/user-attachments/assets/b9ba1c9c-b758-4250-922f-d21b7eb73e2d)
+- The last thing to do here is to create a visual through Sentinel so we can see on a map where the attackers are coming from. We can do this by creating a WorkBook, you can find this under [Threat Management](./images/screenshot.png)
     
 - Then we remove the elements that the WorkBook was prepopulated with, and add a new query, make sure to also paste this query into the Advanced Editor.
     
@@ -133,7 +133,7 @@ WindowsEvents
 	"name": "query - 0"
 }
 
-- When all that is finished the final product should look similar to [![this](./images/screenshot.png)](https://github.com/user-attachments/assets/36e45261-c57e-4bd0-b1be-8fb1d514e582)
+- When all that is finished the final product should look similar to [this](./images/screenshot.png)
 
      What this query is doing is counting up the different login failures where the longitude, latitude, city, and country are the same and plotting them on the map!
 
@@ -142,7 +142,7 @@ In this step, we will set up analytical rules in Microsoft Sentinel to trigger a
 
 To do this we go to Microsoft Sentinel and go to the Analytics tab, then click on "+ Create" --> "Scheduled query rule" 
 
-If we want to create a rule for Brute Force Attempt Detection input use [![these settings](./images/screenshot.png)](https://github.com/user-attachments/assets/32b4d054-775f-4ae9-af72-b2044f5081cc) for MITRE ATT&CK.
+If we want to create a rule for Brute Force Attempt Detection input use [these settings](./images/screenshot.png)
 
 After we implement those settings, click on "Set Rule Logic" and input this KQL script!
 
@@ -153,7 +153,7 @@ SecurityEvent
 | project TimeGenerated, Account, IpAddress, FailedAttempts
 | order by TimeGenerated desc
 
-It should appear as [![this](./images/screenshot.png)](https://github.com/user-attachments/assets/ab51a211-f46d-44b3-baa2-eb4ef27469ce) afterwards.
+It should appear as [this](./images/screenshot.png)
 
 This query identifies multiple failed login attempts within a set time period (e.g., 5 failed logins in 10 minutes) from the same account or IP address.
 
